@@ -19,7 +19,7 @@ function main_menu() {
 }
 function nmap_menu() {
   NMAP=$(whiptail --title "Nmap" --fb --menu "Select Attack" 15 60 4 \
-      "Scan" "scans network for all devices" \
+      "Scan" "Scans network for all devices" \
       "UDP-Scan" "Sends UDP packet to target" \
       "Port-Scan" "Probes for open ports of a target" \
       "TCP-Scan" "" \
@@ -27,21 +27,29 @@ function nmap_menu() {
       "Target-Scan" "" \
       "Mac-Address" "Gets mac address of current machine" \
       "ipv4-Address" "Gets ipv4 address of current machine" \
-      "Back" "go back a menu " 3>&1 1>&2 2>&3)
+      "Back" "Go back a menu " 3>&1 1>&2 2>&3)
       case $NMAP in
       Scan)scan;;
-      UDP-Scan)echo "not set up yet";;
-      Port-Scan)echo "not set up yet";;
-      TCP-Scan)echo "not set up yet";;
-      SYN-Scan)echo "not set up yet";;
-      Target-Scan)echo "not set up yet";;
-      Mac-Address)echo "not set up yet";;
-      ipv4-Address)echo "not set up yet";;
+      UDP-Scan)udp;;
+      Port-Scan)port;;
+      TCP-Scan)tcp;;
+      SYN-Scan)syn;;
+      Target-Scan)target;;
+      Mac-Address)mac;;
+      ipv4-Address)ip;;
       Back)main_menu;;
       esac
 }
 function aircrack() {
-    echo "not set up yet"
+    AIRCRACK=$(whiptail --title "Aircrack-ng" --fb --menu "Select Attack" 15 60 4 \
+    "Deauth" "Deauthentication attack" \
+    "Crack" "Bruteforce a WPA2 network" \
+    "Back" "go back a menu " 3>&1 1>&2 2>&3)
+    case $AIRCRACK in
+    Deauth)deauth;;
+    Crack)crack;;
+    Back)main_menu;;
+    esac
 }
 
 main_menu
